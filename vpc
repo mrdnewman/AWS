@@ -49,8 +49,8 @@ ROUTE
 PUCLIC-ROUTE
 ------------
 ROUTE
-10.0.0.0/26	    local	                  active    No	
-0.0.0.0/0       igw-0d067fe2c02454f18	  active    No
+10.0.0.0/26	   local	                  active    No	
+0.0.0.0/0      igw-0d067fe2c02454f18	  active    No
 
 
 
