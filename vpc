@@ -1,0 +1,64 @@
+
+
+Public-SG
+-----------
+INBOUND
+SSH   TCP   22    <external_ip>/32
+SSH   TCP   22s   g-06930d8dd83a80268 (Private-SG)
+
+OUTBOUND
+All traffic   All   All   0.0.0.0/0
+
+Private-SG
+-----------
+INBOUND
+SSH   TCP   22    sg-03555291c21e40674 (Public-SG01)
+
+OUTBOUND    
+All traffic   All   All   0.0.0.0/0
+
+
+Public-NACL
+-----------
+INBOUND RULES
+100   ALL TCP   TCP (6)   0 - 65535   <external_ip>/32    ALLOW
+200   SSH (22)  TCP (6)   22          <external_ip>/32    ALLOW
+300   ALL TCP   TCP (6)   0 - 65535   10.0.0.0/26         ALLOW
+
+OUTBOUND RULES
+100   ALL TCP   TCP (6)   0 - 65535    <external_ip>/32   ALLOW
+200   SSH (22)  TCP (6)   22           <external_ip>/32   ALLOW
+300   ALL TCP   TCP (6)   0 - 65535    10.0.0.0/26        ALLOW
+
+PRIVATE-NACL
+-----------
+INBOUND
+100   ALL TCP   TCP (6)   0 - 65535    10.0.0.0/28        ALLOW
+200   SSH (22)  TCP (6)   22           10.0.0.0/28        ALLOW
+
+OUTBOUND
+100   ALL TCP   TCP (6)   0 - 65535    10.0.0.0/28        ALLOW
+200   SSH (22)  TCP (6)   22           10.0.0.0/28        ALLOW
+
+
+PRIVATE-ROUTE
+-------------
+ROUTE
+10.0.0.0/26	   local	    active    No
+
+PUCLIC-ROUTE
+------------
+ROUTE
+10.0.0.0/26	    local	                  active    No	
+0.0.0.0/0       igw-0d067fe2c02454f18	  active    No
+
+
+
+
+
+
+
+
+
+
+
