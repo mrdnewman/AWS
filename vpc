@@ -1,5 +1,8 @@
 
 
+
+** Private / Public Subnet Setup **
+
 Public-SG
 -----------
 INBOUND
@@ -55,7 +58,37 @@ ROUTE
 
 
 
+**    ALB SETUP    **
+                        
+DOC RES: https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups
+                            
+ALB SG Setting:
+--------------
+Inbound --
+HTTP        TCP         80          0.0.0.0/0
+Outbound --
+HTTP        TCP         80          Private SG
 
+PRIVATE SG SETTING:
+------------------
+Inbound --
+HTTP        TCP     80          ALB SG
+
+NACL SETTING:
+------------
+
+Inbound --
+100    ALL Traffic        ALL        ALL           0.0.0.0/0      Allow 
+X -- 200    HTTP               TCP        80            0.0.0.0/0      Allow
+X -- 300    Cust TCP Rules     TCP        1024-65535    10.0.0.0/26    Allow
+
+Outbound --
+100    ALL Traffic        ALL        ALL           0.0.0.0/0      Allow
+X -- 200    HTTP               TCP        80            10.0.0.0/26    ALLOW
+X -- 300    Cust TCP Rules     TCP        1024-65535    0.0.0.0./0     ALLOW
+/
+NOTE: HealthChecks seems to work with ONLY "/"  
+NOTE: ALB works WO/ NACL rules marked with "X --". ALL traffic seems to work fine. 
 
 
 
