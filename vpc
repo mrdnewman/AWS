@@ -1,6 +1,10 @@
 
 
 
+More Secure:
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-recommended-nacl-rules.html#nacl-rules-scenario-1
+
+
 ** Private / Public Subnet Setup **
 
 Public-SG
