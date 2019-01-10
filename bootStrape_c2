@@ -1,0 +1,11 @@
+
+
+$ sudo sudo hostnamectl set-hostname tf-ctl01
+
+$ sudo sed -i "/127.0.0.1 localhost/a\\127.0.0.1 tf-ctl01" /etc/hosts
+
+  So in this case, when we match a line with /127.0.0.1 localhost/, we run the 
+  command APPEND ->'a' -> with text argument "'127.0.0.1 tf-ctl01'", which becomes 
+  a new line of the file:
+
+$ sudo init 6
