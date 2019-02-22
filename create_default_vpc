@@ -3,6 +3,8 @@
 
 url --> https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html
 
+NOTE: This will create VPC, Subnets, routes and acl ...
+
 
 $ aws ec2 create-default-vpc
 
