@@ -1,0 +1,31 @@
+
+
+
+url --> https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html
+
+
+$ aws ec2 create-default-vpc
+
+RESULT
+{
+    "Vpc": {
+        "CidrBlock": "172.31.0.0/16",
+        "DhcpOptionsId": "dopt-50dc3239",
+        "State": "pending",
+        "VpcId": "vpc-07378a3f544c8d47f",
+        "OwnerId": "627284573236",
+        "InstanceTenancy": "default",
+        "Ipv6CidrBlockAssociationSet": [],
+        "CidrBlockAssociationSet": [
+            {
+                "AssociationId": "vpc-cidr-assoc-083ba24f8c5babea9",
+                "CidrBlock": "172.31.0.0/16",
+                "CidrBlockState": {
+                    "State": "associated"
+                }
+            }
+        ],
+        "IsDefault": true,
+        "Tags": []
+    }
+}
